@@ -49,8 +49,7 @@
     <ImageView
         android:id="@+id/iv_sign_two"
         style="@style/sign_image_attribute"
-        android:background="@drawable/shape_circle_red"
-        android:src="@mipmap/baise_logo"/>
+        android:background="@drawable/shape_circle_red"/>
 
     <TextView
         android:id="@+id/tv_integral_two"
@@ -63,8 +62,7 @@
     <ImageView
         android:id="@+id/iv_sign_three"
         style="@style/sign_image_attribute"
-        android:background="@drawable/shape_circle_blue"
-        android:src="@mipmap/baise_logo"/>
+        android:background="@drawable/shape_circle_blue"/>
 
     <TextView
         android:id="@+id/tv_integral_three"
@@ -77,8 +75,7 @@
     <ImageView
         android:id="@+id/iv_sign_four"
         style="@style/sign_image_attribute"
-        android:background="@drawable/shape_circle_green"
-        android:src="@mipmap/baise_logo"/>
+        android:background="@drawable/shape_circle_green"/>
 
     <TextView
         android:id="@+id/tv_integral_four"
@@ -91,8 +88,7 @@
     <ImageView
         android:id="@+id/iv_sign_five"
         style="@style/sign_image_attribute"
-        android:background="@drawable/shape_circle_zi"
-        android:src="@mipmap/baise_logo"/>
+        android:background="@drawable/shape_circle_zi"/>
 
     <TextView
         android:id="@+id/tv_integral_five"
@@ -105,8 +101,7 @@
     <ImageView
         android:id="@+id/iv_sign_six"
         style="@style/sign_image_attribute"
-        android:background="@drawable/shape_circle_pink"
-        android:src="@mipmap/baise_logo"/>
+        android:background="@drawable/shape_circle_pink"/>
 
     <TextView
         android:id="@+id/tv_integral_six"
@@ -119,8 +114,7 @@
     <ImageView
         android:id="@+id/iv_sign_seven"
         style="@style/sign_image_attribute"
-        android:background="@drawable/shape_circle_yellow"
-        android:src="@mipmap/baise_logo"/>
+        android:background="@drawable/shape_circle_yellow"/>
 
     <TextView
         android:id="@+id/tv_integral_seven"
