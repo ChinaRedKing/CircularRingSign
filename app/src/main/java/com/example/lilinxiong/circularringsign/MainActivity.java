@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //动画初始化
         initAnim();
     }
+
     //动画初始化
     private void initAnim() {
         //左上角提示动画
@@ -258,27 +259,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_sign_below_hint = (TextView) findViewById(R.id.tv_sign_below_hint);
     }
 
-    //初始化动画
-    private void doAnimateOpen(View view, int index, int total, int radius) {
-        if (view.getVisibility() != View.VISIBLE) {
-            view.setVisibility(View.VISIBLE);//将显示的模式改变为INVISIBLE
-        }
-        double degree = Math.toRadians(360) / (total - 1) * index;
-        int translationX = -(int) (radius * Math.sin(degree));
-        int translationY = -(int) (radius * Math.cos(degree));
-        AnimatorSet set = new AnimatorSet();
-        //包含平移、缩放和透明度动画
-        set.playTogether(
-                ObjectAnimator.ofFloat(view, "translationX", 0, translationX),
-                ObjectAnimator.ofFloat(view, "translationY", 0, translationY),
-                ObjectAnimator.ofFloat(view, "scaleX", 0f, 1f),
-                ObjectAnimator.ofFloat(view, "scaleY", 0f, 1f),
-                ObjectAnimator.ofFloat(view, "alpha", 0f, 1)
-        );
-        //动画周期为500ms
-        set.setDuration(1000).start();
-    }
-
     /**
      * 初始化时，第一天的就在中间，直接放大就好
      *
@@ -296,7 +276,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         set.setDuration(1000).start();
     }
 
-    //初始化动画
+    /**
+     * @param view   需要位移的View
+     * @param index  位置
+     * @param total  平分多少份
+     * @param radius 圆的半径
+     */
     private void doAnimateOpen(TextImageBean view, int index, int total, int radius) {
         if (view.getIv().getVisibility() != View.VISIBLE) {
             view.getIv().setVisibility(View.VISIBLE);//ImageView显示
@@ -304,7 +289,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         double degree = Math.toRadians(360) / (total - 1) * index;
         int translationX = -(int) (radius * Math.sin(degree));
         int translationY = -(int) (radius * Math.cos(degree));
-        //存入属于有背景图的坐标的X，Y坐标
         view.setMoveX(translationX);
         view.setMoveY(translationY);
         AnimatorSet set = new AnimatorSet();
@@ -318,6 +302,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         );
         //动画周期为500ms
         set.setDuration(500).start();
+    }
+
+    /**
+     * @param view   需要位移的View
+     * @param index  位置
+     * @param total  平分多少份
+     * @param radius 圆的半径
+     */
+    private void doAnimateOpen(View view, int index, int total, int radius) {
+        if (view.getVisibility() != View.VISIBLE) {
+            view.setVisibility(View.VISIBLE);
+        }
+        double degree = Math.toRadians(360) / (total - 1) * index;
+        int translationX = -(int) (radius * Math.sin(degree));
+        int translationY = -(int) (radius * Math.cos(degree));
+        AnimatorSet set = new AnimatorSet();
+        //包含平移、缩放和透明度动画
+        set.playTogether(
+                ObjectAnimator.ofFloat(view, "translationX", 0, translationX),
+                ObjectAnimator.ofFloat(view, "translationY", 0, translationY),
+                ObjectAnimator.ofFloat(view, "scaleX", 0f, 1f),
+                ObjectAnimator.ofFloat(view, "scaleY", 0f, 1f),
+                ObjectAnimator.ofFloat(view, "alpha", 0f, 1)
+        );
+        //动画周期为500ms
+        set.setDuration(1000).start();
     }
 
     @Override
@@ -420,7 +430,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 图片交换位置相关动画
+     * 图片交换位置动画
      *
      * @param mainTextImageMap
      * @param minorTextImageMap
@@ -492,10 +502,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 交换位置
      *
-     * @param mainTextImageMap
-     * @param minorTextImageMap
+     * @param mainTextImageMap  中间大圆
+     * @param minorTextImageMap 要替换的周围小圆
      */
-    private void doAnimateMoveSwapPlaces(TextImageBean mainTextImageMap, TextImageBean minorTextImageMap,
+    private void doAnimateMoveSwapPlaces(TextImageBean mainTextImageMap,
+                                         TextImageBean minorTextImageMap,
                                          TextView centerView) {
         final ImageView MainImage = mainTextImageMap.getIv();
         final ImageView MinorImage = minorTextImageMap.getIv();
@@ -510,8 +521,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final AnimatorSet set = new AnimatorSet();
 
-//        ObjectAnimator anim_scale_rounde_X = new ObjectAnimator();
-//        ObjectAnimator anim_scale_rounde_Y = new ObjectAnimator();
         //缩小，平移到周围
         ObjectAnimator anim_roundeX = ObjectAnimator.ofFloat(MainImage, "translationX", 0, moveX);
         ObjectAnimator anim_roundeY = ObjectAnimator.ofFloat(MainImage, "translationY", 0, moveY);

@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <!--签到界面，ImageView-->
+    <!--ImageView-->
     <style name="sign_image_attribute">
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
@@ -18,7 +18,7 @@
         <item name="android:paddingTop">2dp</item>
         <item name="android:visibility">gone</item>
     </style>
-    <!--签到界面，TextView-->
+    <!--TextView-->
     <style name="sign_text_attribute">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -26,7 +26,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:visibility">gone</item>
     </style>
-    <!--签到界面，ImageView上的TextView-->
+    <!--ImageView上的TextView-->
     <style name="sign_imge_top_text_attribute">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
